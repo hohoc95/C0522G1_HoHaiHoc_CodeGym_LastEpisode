@@ -1,0 +1,86 @@
+<div class="p-3 px-5" *ngIf="products$ !== undefined">
+  <h2 class="text-center fw-bold text-dark mt-3">DANH SÁCH .....</h2>
+
+  <nav class="navbar navbar-expand-lg py-0 my-0">
+    <div class="container-fluid">
+      <button class="btn btn-primary btn-outline-secondary mb-2" routerLink="/create">
+        <span class="text-light">Thêm mới sản phẩm </span>
+      </button>
+
+      <div class="d-flex my-2" role="search">
+        <input class="form-control me-2" type="text" placeholder="Tên sản phẩm.." aria-label="Search"
+               [(ngModel)]="nameSearch">
+
+        <select class="form-select me-2" [(ngModel)]="typeSearch" [compareWith]="compareWithId"
+                aria-label="Search">
+          <option [value]="''" disabled>Loại sản phẩm..</option>
+          <option *ngFor="let item of (productTypes$ | async)" [ngValue]="item.productTypeName">
+            {{item.productTypeName}}</option>
+        </select>
+
+        <button class="btn btn-light btn-outline-warning me-2" (click)="resetSearchInput()">
+          <i class="fa-solid fa-xmark"></i></button>
+
+        <button class="btn btn-light btn-outline-primary" (click)="searchByMore()">
+          <i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table table-light table-striped table-bordered" id="customerTable">
+    <thead>
+    <tr class="table-dark text-dark">
+      <th class="text-center">#</th>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+      <th>Trạng thái</th>
+      <th>Loại sản phẩm</th>
+      <th class="text-center" colspan="2">Chức năng</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of (products$ | async)!; index as i">
+      <td class="text-center">{{i + 1 + (page - 1) * pageSize}}</td>
+      <td>{{item.name | uppercase}}</td>
+      <td>{{item.price | currency: "VND"}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.type}}</td>
+
+      <td class="text-center">
+        <a routerLink="/edit/{{item.id}}">
+          <button class="btn btn-warning btn-outline-secondary text-dark py-0">
+            Sửa
+          </button>
+        </a>
+      </td>
+      <td class="text-center">
+        <button class="btn btn-danger btn-outline-secondary text-white py-0"
+                (click)="deleteProduct(item.id, item.name)">
+          Xóa
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="(total$ | async)!"
+      [(page)]="page"
+      [maxSize]="3"
+      [rotate]="true"
+      [pageSize]="pageSize"
+      [boundaryLinks]="true"
+      (pageChange)="getAllProductPaging()">
+    </ngb-pagination>
+
+    <label>
+      <select class="form-control-sm" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getAllProductPaging()">
+        <option [ngValue]="5">5 sản phẩm / trang</option>
+        <option [ngValue]="7">7 sản phẩm / trang</option>
+        <option [ngValue]="10">10 sản phẩm / trang</option>
+      </select>
+    </label>
+  </div>
+</div>

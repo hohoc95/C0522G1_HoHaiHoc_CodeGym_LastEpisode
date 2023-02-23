@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+  color: #bad8ff;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #bad8ff;
+}
+
+body {
+  /*background-image: url("https://cutewallpaper.org/27/black-wallpaper-iphone-gif/pin-on-things.gif");*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    /*url("https://baogialai.com.vn/dataimages/202208/original/images3173623_h_h.jpg");*/
+  url("https://1.bp.blogspot.com/-EMfCf3LIOsw/XRw3rAlXUqI/AAAAAAAAH9I/5WFT8Pltr1oj4O0-ifIOc0KwqjKXqr6QACKgBGAs/w0/nezuko-kamado-kimetsu-no-yaiba-uhdpaper.com-4K-135.jpg");
+  background-size: cover;
+  position: relative;
+}
+
+.formCSS {
+  background-image: url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000");
+}
+
+.modalCSS {
+  background-image: url("https://images.unsplash.com/photo-1607513746994-51f730a44832?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb");
+}

@@ -1,0 +1,132 @@
+<div class="p-3 px-5">
+  <h2 class="text-center fw-bold text-light mt-3">
+    DANH SÁCH GAME </h2>
+
+  <nav class="navbar navbar-expand-lg py-0 my-0">
+    <div class="container-fluid">
+      <a routerLink="/create">
+        <button class="btn btn-primary btn-outline-secondary">
+          <span class="text-light"> Thêm mới game</span>
+        </button>
+        <button class="btn btn-success btn-outline-info">
+          <span class="text-light"> Export PDF file</span>
+        </button>
+      </a>
+
+      <div class="d-flex my-2" role="search">
+        <input class="form-control me-2" type="text" placeholder="Nhập tên game..." aria-label="Search"
+               [(ngModel)]="nameSearch">
+        <input class="form-control me-2" type="text" placeholder="Nhập mã game..." aria-label="Search"
+               [(ngModel)]="codeSearch">
+        <input class="form-control me-2" type="text" placeholder="Nhập nhà sx game..." aria-label="Search"
+               [(ngModel)]="productSearch">
+
+        <select class="form-select me-2" [(ngModel)]="genresSearch" [compareWith]="compareWithId"
+                aria-label="Search">
+          <option [value]="''" disabled>Thể loại game...</option>
+          <option *ngFor="let item of genres" [ngValue]="item.genresName">
+            {{item.genresName}}</option>
+        </select>
+
+        <button class="btn btn-light btn-outline-warning me-2" (click)="resetSearchInput()">
+          <i class="fa-solid fa-xmark"></i></button>
+
+        <button class="btn btn-light btn-outline-primary" (click)="searchByMore()">
+          <i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table table-light table-striped table-bordered" id="productTable" *ngIf="(gameListPaging.length !== 0) else isEmpty">
+    <thead>
+    <tr class="table-dark text-light">
+      <th class="text-center">STT</th>
+      <th>Tên game</th>
+<!--      <th>Ngày sx</th>-->
+      <th>Mã game</th>
+      <th>Nhà sản xuất</th>
+<!--      <th>Mô tả</th>-->
+      <th>Số lượng</th>
+      <th>Giá</th>
+      <th>Thể loại game</th>
+      <th class="test-center">Chi tiết</th>
+      <th class="test-center">Mua</th>
+      <th class="text-center">Sửa</th>
+      <th class="text-center">Xóa</th>
+    </tr>
+    </thead>
+
+    <tbody >
+    <tr *ngFor="let item of gameListPaging; index as i">
+      <td class="text-center">{{i + 1 + (curPage - 1) * numberRecord}}</td>
+      <td>{{item.gameName | titlecase}}</td>
+      <td>{{item.gameCode}}</td>
+      <td>{{item.gameProduct}}</td>
+      <td>{{(item.gameAmount)}}</td>
+      <td><span *ngIf="item.gamePrice == 0 else notFree">Free</span>
+        <ng-template #notFree><span>{{item.gamePrice}}</span></ng-template>
+
+      </td>
+      <td>{{item.genres.genresName}}</td>
+
+      <td class="text-center">
+        <button class="btn btn-info btn-outline-secondary btn-sm"
+                (click)="detailGame(item.id, item.gameName, item.gameDate, item.gameDescription, item.gameAmount)">Detail
+          <!--          <span class="fa-solid text-light h6 m-auto px-2"></span>-->
+          <span class="fa-solid fa-thin fa-circle-info text-light h6 m-auto px-2"></span>
+        </button>
+      </td>
+      <td class="text-center">
+        <button class="btn btn-info btn-outline-secondary btn-sm"
+                (click)="buyGame(item.id, item.gameName,item.gameAmount , item.gamePrice)">Buy
+          <span class="fa-solid fa-thin fa-circle-info text-light h6 m-auto px-2"></span>
+
+        </button>
+      </td>
+
+      <td class="text-center">
+        <a routerLink="/edit/{{item.id}}">
+          <button class="btn btn-success btn-outline-secondary btn-sm">
+            <!--            <span class="fa-solid fa-user-pen text-light h6 m-auto px-2"></span>-->
+            <span class="fa-solid fa-thin fa-pen-to-square text-light h6 m-auto px-2"></span>
+          </button>
+        </a>
+      </td>
+
+      <td class="text-center">
+        <button class="btn btn-danger btn-outline-secondary btn-sm"
+                (click)="deleteGame(item.id, item.gameName)">
+          <!--          <span class="fa-solid fa-person-circle-minus text-light h6 m-auto px-2"></span>-->
+          <span class="fa-solid fa-trash text-light h6 m-auto px-2"></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+  <ng-template #isEmpty>
+    <h1 class="text-center fw-bold text-light mt-3">Không có dữ liệu này!</h1>
+  </ng-template>
+
+  <nav aria-label="..." class="justify-content-center d-flex">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="previos()" *ngIf="curPage > 1">&laquo; Trang trước</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage <= 1">
+        <a class="page-link">&laquo;</a>
+      </li>
+
+      <li class="page-item"><a class="page-link disabled" href="" [text]="curPage + ' / ' + totalPage"
+                               *ngIf="curPage <= totalPage"></a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" (click)="next()" *ngIf="curPage < totalPage">Trang sau &raquo;</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage >= totalPage">
+        <a class="page-link">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+</div>

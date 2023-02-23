@@ -1,0 +1,148 @@
+{
+  "genres": [
+    {
+      "id": 1,
+      "genresName": "Action - Soul"
+    },
+    {
+      "id": 2,
+      "genresName": "Moba"
+    },
+    {
+      "id": 3,
+      "genresName": "Adventure"
+    },
+    {
+      "id": 4,
+      "genresName": "Action - Adventure"
+    }
+  ],
+  "game": [
+    {
+      "gameName": "Elden Ring",
+      "gameDate": "25-02-2022",
+      "gameCode": "AAA-ED1",
+      "gameProduct": "From Software",
+      "gameDescription": "Game of the year 2022, đáng đồng tiền bát gạo",
+      "gameAmount": "20",
+      "gamePrice": "50",
+      "genres": {
+        "id": 4,
+        "genresName": "Action - Adventure"
+      },
+      "id": 1
+    },
+    {
+      "id": 2,
+      "gameName": "League of Legends",
+      "gameDate": "27-10-2009",
+      "gameCode": "AAA-LOL",
+      "gameProduct": "Riot Games",
+      "gameDescription": "Game nhiều người chơi nhất hiện nay",
+      "gameAmount": 20,
+      "gamePrice": 0,
+      "genres": {
+        "id": 2,
+        "genresName": "Moba"
+      }
+    },
+    {
+      "gameName": "Genshin Impact",
+      "gameDate": "28-09-2020",
+      "gameCode": "AAA-GI",
+      "gameProduct": "miHoYo",
+      "gameDescription": "Game có đồ họa bắt mắt nhất 2020",
+      "gameAmount": 20,
+      "gamePrice": "0",
+      "genres": {
+        "id": 3,
+        "genresName": "Adventure"
+      },
+      "id": 3
+    },
+    {
+      "gameName": "Stray",
+      "gameDate": "2022-07-19",
+      "gameCode": "AAA-Stray",
+      "gameProduct": "BlueTwelve Studio/AI",
+      "gameDescription": "Đề cử Game of the year 2022, main là mèo, bao cute :v",
+      "gameAmount": "20",
+      "gamePrice": "10",
+      "genres": {
+        "id": 3,
+        "genresName": "Adventure"
+      },
+      "id": 4
+    },
+    {
+      "gameName": "Xenoblade Chronicles 3",
+      "gameDate": "2022-07-29",
+      "gameCode": "AAA-XC3",
+      "gameProduct": "Monolith Soft/Nintendo",
+      "gameDescription": "Game of the year 2022, đáng đồng tiền bát gạo, tuyệt vời cho wibu",
+      "gameAmount": 20,
+      "gamePrice": "20",
+      "genres": {
+        "id": 4,
+        "genresName": "Action - Adventure"
+      },
+      "id": 5
+    },
+    {
+      "gameName": "A Plague Tale: Requiem",
+      "gameDate": "2022-10-17",
+      "gameCode": "AAA-APTR",
+      "gameProduct": "Asobo Studio/FE",
+      "gameDescription": "Game of the year 2022, đồ họa cực phiêu",
+      "gameAmount": 20,
+      "gamePrice": "30",
+      "genres": {
+        "id": 3,
+        "genresName": "Adventure"
+      },
+      "id": 6
+    },
+    {
+      "gameName": "God of War Ragnarök",
+      "gameDate": "2022-11-09",
+      "gameCode": "AAA-GOWR",
+      "gameProduct": "Santa Monica Studio",
+      "gameDescription": "Quá hay",
+      "gameAmount": "20",
+      "gamePrice": "50",
+      "genres": {
+        "id": 4,
+        "genresName": "Action - Adventure"
+      },
+      "id": 7
+    },
+    {
+      "gameName": "Horizon Forbidden West",
+      "gameDate": "2022-02-18",
+      "gameCode": "AAA-HFW",
+      "gameProduct": "Guerrilla Games/SIE",
+      "gameDescription": "Game đề cử GOTY 2022",
+      "gameAmount": "20",
+      "gamePrice": "40",
+      "genres": {
+        "id": 4,
+        "genresName": "Action - Adventure"
+      },
+      "id": 8
+    },
+    {
+      "gameName": "Phong thần",
+      "gameDate": "2006-02-02",
+      "gameCode": "AAA-FT",
+      "gameProduct": "VNG",
+      "gameDescription": "Hay",
+      "gameAmount": "20",
+      "gamePrice": "0",
+      "genres": {
+        "id": 4,
+        "genresName": "Action - Adventure"
+      },
+      "id": 9
+    }
+  ]
+}
